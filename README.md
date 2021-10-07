@@ -16,8 +16,8 @@
 
 I'll keep updating this game as long as I'm inspired of around me.
 
-|Version|What's new|Date|
-| .... | .... | .... |
+| Version | What's new? | Date |
+|  ------ | ------ | ------ |
 |v1.0|it can be used on github...|7.10.2021|
 
 
