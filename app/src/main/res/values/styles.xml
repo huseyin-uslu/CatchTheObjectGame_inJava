@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextViewThemeOnMyOwn" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/string_color</item>
+        <item name="android:letterSpacing">0.185</item>
+        <item name="android:fontFamily">@font/antonregular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline5</item>
+        <item name="android:padding">15dp</item>
+    </style>
+</resources>

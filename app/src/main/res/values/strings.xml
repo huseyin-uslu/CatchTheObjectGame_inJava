@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">YAKALANMAYAN ADAM</string>
+    <string name="start_game">START GAME</string>
+    <string name="game">This is an object you need to catch.</string>
+    <string name="score_text">SCORE: %1$s</string>
+    <string name="countdown_timer">TIME: %1$s</string>
+    <string name="default_score_text">SCORE: 0</string>
+    <string name="default_countdown_timer">TIME: 0</string>
+    <string name="toswapbackground">An icon to swap background</string>
+</resources>
