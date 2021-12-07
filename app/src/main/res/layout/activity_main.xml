@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/backgroundOfActivity"
-    android:background="@color/first_bg_color"
+    android:background="@drawable/background5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -97,7 +97,7 @@
         android:id="@+id/movingObject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/down_right"
+        android:src="@drawable/right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

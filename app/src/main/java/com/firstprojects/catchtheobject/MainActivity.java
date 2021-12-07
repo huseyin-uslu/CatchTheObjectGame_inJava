@@ -28,14 +28,12 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isGameStarted = false;
 
-    //private final ArrayList<Integer> backgrounds = new ArrayList<>();
+    private final ArrayList<Integer> backgrounds = new ArrayList<>();
 
-    private final ArrayList<Integer> colors = new ArrayList<>();
     private int selectedBackgroundNumber = 0;
 
     private void changeBackground(int index){
-        binding.backgroundOfActivity.setBackgroundColor(colors.get(index));
-       // binding.backgroundOfActivity.setBackgroundResource(backgrounds.get(index));
+        binding.backgroundOfActivity.setBackgroundResource(backgrounds.get(index));
     }
 
     private int score = 0;
@@ -59,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
         DOWN_RIGHT,
         LEFT,
         RIGHT,
-        CEILING,
-        BOTTOM
     }
 
    private final DisplayMetrics metrics = new DisplayMetrics();
@@ -83,25 +79,25 @@ public class MainActivity extends AppCompatActivity {
     private Directions getCurrentDirection() {
 
         if(velocity > 0 && horizontalVelocity >= 0){
-                binding.movingObject.setImageDrawable( ContextCompat.getDrawable(this,R.drawable.up_right)); //***
+                binding.movingObject.setImageDrawable( ContextCompat.getDrawable(this,R.drawable.left_up)); //***
             return Directions.UP_RIGHT;
         }else if(velocity < 0 && horizontalVelocity >= 0){
-                binding.movingObject.setImageDrawable( ContextCompat.getDrawable(this,R.drawable.down_right)); //***
+                binding.movingObject.setImageDrawable( ContextCompat.getDrawable(this,R.drawable.right_down)); //***
             return Directions.DOWN_RIGHT;
         }else if(velocity < 0 && horizontalVelocity <= 0){
-                binding.movingObject.setImageDrawable( ContextCompat.getDrawable(this,R.drawable.down_left)); //***
+                binding.movingObject.setImageDrawable( ContextCompat.getDrawable(this,R.drawable.left_down)); //***
             return Directions.DOWN_LEFT;
         }else if(velocity > 0 && horizontalVelocity <= 0){
                 //THIS IS JUST ON THE LEFT DIRECTION.!!
-                binding.movingObject.setImageDrawable( ContextCompat.getDrawable(this,R.drawable.up_left)); //***
+                binding.movingObject.setImageDrawable( ContextCompat.getDrawable(this,R.drawable.right_up)); //***
             return Directions.UP_LEFT;
         }else{
             //velocity == 0
             if(horizontalVelocity <= 0){
-                binding.movingObject.setImageDrawable( ContextCompat.getDrawable(this,R.drawable.up_left));
+                binding.movingObject.setImageDrawable( ContextCompat.getDrawable(this,R.drawable.left));
                 return Directions.LEFT;
             }else{
-                binding.movingObject.setImageDrawable( ContextCompat.getDrawable(this,R.drawable.up_right));
+                binding.movingObject.setImageDrawable( ContextCompat.getDrawable(this,R.drawable.right));
                 return Directions.RIGHT;
             }
         }
@@ -143,16 +139,15 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     if(targetY > getScreenHeight){
 
-                        currentDirection = Directions.BOTTOM;
-                        binding.movingObject.setImageDrawable(ContextCompat.getDrawable(MainActivity.this,R.drawable.up_right));
+
+                        binding.movingObject.setImageDrawable(ContextCompat.getDrawable(MainActivity.this,R.drawable.right_up));
 
                         binding.movingObject.setY(getScreenHeight - 1f);
                         velocity = getRandom(getScreenHeight/50,getScreenHeight/35);
 
                     }else if(targetY < 0){
 
-                        currentDirection = Directions.CEILING;
-                        binding.movingObject.setImageDrawable(ContextCompat.getDrawable(MainActivity.this,R.drawable.up_left));
+                        binding.movingObject.setImageDrawable(ContextCompat.getDrawable(MainActivity.this,R.drawable.left_up));
 
                         binding.movingObject.setY(0.1f);
                         velocity =  - getRandom(getScreenHeight/50,getScreenHeight/35);
@@ -181,23 +176,12 @@ public class MainActivity extends AppCompatActivity {
     //INITILIZATION PROCESS
     private void definition(){
 
-        colors.add(ContextCompat.getColor(this,R.color.first_bg_color));
-        colors.add(ContextCompat.getColor(this,R.color.second_bg_color));
-        colors.add(ContextCompat.getColor(this,R.color.third_bg_color));
-        colors.add(ContextCompat.getColor(this,R.color.fourth_bg_color));
 
-        /*
         backgrounds.add(R.drawable.background1);
         backgrounds.add(R.drawable.background2);
         backgrounds.add(R.drawable.background3);
         backgrounds.add(R.drawable.background4);
         backgrounds.add(R.drawable.background5);
-        backgrounds.add(R.drawable.background6);
-        backgrounds.add(R.drawable.background7);
-        backgrounds.add(R.drawable.background8);
-        backgrounds.add(R.drawable.background9);
-        */
-
 
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
@@ -219,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
         binding.startGameButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               startGame(30);
+               startGame(60);
            }
        });
 
@@ -236,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
                if(selectedBackgroundNumber > 0){
                    selectedBackgroundNumber--;
                }else{
-                   selectedBackgroundNumber = colors.size() - 1;
+                   selectedBackgroundNumber = backgrounds.size() - 1;
                }
                changeBackground(selectedBackgroundNumber);
            }
@@ -245,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
        binding.arrowRightButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               if(selectedBackgroundNumber < colors.size() - 1){
+               if(selectedBackgroundNumber < backgrounds.size() - 1){
                    selectedBackgroundNumber++;
                }else{
                    selectedBackgroundNumber = 0;

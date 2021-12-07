@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="string_color">#95BA0000</color>
+    <color name="string_color">#DCFF3333</color>
 
     <!-- background colors -->
     <color name="first_bg_color">#CCA3FF</color>
